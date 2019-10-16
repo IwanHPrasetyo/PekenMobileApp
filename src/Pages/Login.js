@@ -69,7 +69,7 @@ const style = StyleSheet.create({
   },
   image: {
     marginTop: 20,
-    marginLeft: 70,
+    marginLeft: 80,
   },
   button: {
     backgroundColor: '#00cec9',

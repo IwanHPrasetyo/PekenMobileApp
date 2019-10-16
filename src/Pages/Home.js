@@ -33,59 +33,93 @@ class Home extends Component {
             <Row>
               <Col size={1}>
                 <Row>
-                  <Button
-                    iconRight
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/bulbs.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Bulbs
+                      </Text>
+                    </Col>
                   </Button>
                 </Row>
                 <Row>
-                  <Button
-                    iconRight
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
-                  </Button>
-                </Row>
-              </Col>
-              <Col size={1}>
-                <Row>
-                  <Button
-                    iconRight
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
-                  </Button>
-                </Row>
-                <Row>
-                  <Button
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/flower.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Flower
+                      </Text>
+                    </Col>
                   </Button>
                 </Row>
               </Col>
               <Col size={1}>
                 <Row>
-                  <Button
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/fruit.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Fruit
+                      </Text>
+                    </Col>
                   </Button>
                 </Row>
                 <Row>
-                  <Button
-                    light
-                    style={{width: 140, height: 115, backgroundColor: '#ffff'}}>
-                    <Icon name="arrow-forward" />
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/fungi.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Fungi
+                      </Text>
+                    </Col>
+                  </Button>
+                </Row>
+              </Col>
+              <Col size={1}>
+                <Row>
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/leaves.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Leaves
+                      </Text>
+                    </Col>
+                  </Button>
+                </Row>
+                <Row>
+                  <Button iconRight light style={style.buttonBuy}>
+                    <Col>
+                      <Image
+                        style={style.image}
+                        source={require('../Images/roots.png')}
+                      />
+                      <Text style={{marginLeft: -25, marginTop: 10}}>
+                        Roots
+                      </Text>
+                    </Col>
                   </Button>
                 </Row>
               </Col>
             </Row>
           </Row>
           <Row>
-            <Col style={{paddingLeft: 40, paddingRight: 40}}>
+            <Col style={{paddingLeft: 20, paddingRight: 20}}>
+              <Product />
               <Product />
               <Product />
               <Product />
@@ -120,6 +154,9 @@ const style = StyleSheet.create({
     backgroundColor: '#22a6b3',
     paddingLeft: 130,
   },
+  image: {
+    marginLeft: -30,
+  },
   cardHeader: {
     backgroundColor: '#22a6b3',
     height: 150,
@@ -131,8 +168,18 @@ const style = StyleSheet.create({
     height: 250,
     margin: 20,
     marginTop: -120,
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 10,
+  },
+  buttonBuy: {
+    padding: 25,
+    elevation: 4,
+    height: 114,
+    width: 139,
+    padding: 20,
+    paddingLeft: 60,
+    backgroundColor: 'white',
+    elevation: 2,
   },
 });
 
