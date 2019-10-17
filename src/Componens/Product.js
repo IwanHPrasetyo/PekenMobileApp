@@ -3,21 +3,28 @@ import {Grid, Row, Col, H2, Text, Button, Icon} from 'native-base';
 import {StyleSheet, Image} from 'react-native';
 class Product extends Component {
   render() {
+    //console.log(this.props.name);
     return (
       <Row style={style.card}>
         <Col size={1} style={style.image}>
           <Image
             style={{
-              width: 110,
-              height: 100,
+              width: 80,
+              height: 80,
+              padding: 10,
               borderTopRightRadius: 20,
               borderBottomLeftRadius: 20,
             }}
-            source={require('../Images/backgorund.jpg')}></Image>
+            source={{
+              uri:
+                'http://192.168.1.5:5000/public/images/' + this.props.picture,
+            }}></Image>
         </Col>
         <Col size={2} style={{padding: 10}}>
-          <H2 style={{marginLeft: 20}}>Brocoli</H2>
-          <Text style={{marginTop: 10, marginLeft: 20}}>€ 10</Text>
+          <Text style={{marginLeft: 20}}>{this.props.name}</Text>
+          <Text style={{marginTop: 10, marginLeft: 20}}>
+            € {this.props.price}
+          </Text>
         </Col>
         <Col size={1} style={style.cardBuy}>
           <Button iconLeft style={style.buttonBuy}>
@@ -31,15 +38,15 @@ class Product extends Component {
 
 const style = StyleSheet.create({
   card: {
-    height: 100,
+    height: 80,
     marginTop: 10,
     backgroundColor: '#ffff',
     elevation: 0,
     borderRadius: 20,
   },
   image: {
-    backgroundColor: 'pink',
-    borderRadius: 20,
+    borderRadius: 0,
+    paddingLeft: 5,
   },
   cardBuy: {
     borderRadius: 20,
@@ -47,7 +54,7 @@ const style = StyleSheet.create({
   },
   buttonBuy: {
     padding: 25,
-    marginTop: 20,
+    marginTop: 10,
     borderRadius: 20,
     elevation: 4,
   },

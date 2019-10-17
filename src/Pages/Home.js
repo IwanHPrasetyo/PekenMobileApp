@@ -10,20 +10,63 @@ import {
   Left,
   Body,
   Right,
-  Title,
+  Item,
+  Input,
   Col,
   Text,
+  H3,
 } from 'native-base';
+import axios from 'axios';
 import {Row, Grid} from 'react-native-easy-grid';
-import {StyleSheet, Image} from 'react-native';
+import {StyleSheet, Image, SafeAreaView, ScrollView} from 'react-native';
+
 class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      page: 0,
+      limit: 10,
+    };
+  }
+
+  async componentDidMount() {
+    this.getAll();
+  }
+
+  getAll = async () => {
+    await axios
+      .get('http://192.168.1.5:5000/products?limit=' + this.state.limit)
+      .then(result => {
+        this.setState({
+          data: result.data.data,
+          pages: result.data.page,
+        });
+        //console.log(this.state.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <Container style={{backgroundColor: '#c7ecee'}}>
         <Header style={style.header}>
           <Left />
           <Body>
-            <Title>Peken App</Title>
+            <Item
+              rounded
+              style={{
+                width: 200,
+                height: 40,
+                marginLeft: 180,
+                marginTop: 10,
+                backgroundColor: '#ffff',
+              }}>
+              <Input style={{marginLeft: 20}} placeholder="search" />
+              <Icon active name="search" />
+            </Item>
           </Body>
           <Right />
         </Header>
@@ -119,11 +162,22 @@ class Home extends Component {
           </Row>
           <Row>
             <Col style={{paddingLeft: 20, paddingRight: 20}}>
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              <H3>Product</H3>
+              <SafeAreaView>
+                <ScrollView style={{}}>
+                  {this.state.data.map(item => {
+                    return (
+                      <Product
+                        id_product={item.id_product}
+                        name={item.name}
+                        price={item.price}
+                        picture={item.picture}
+                        handleAddToCart={this.handleAddToCart}
+                      />
+                    );
+                  })}
+                </ScrollView>
+              </SafeAreaView>
             </Col>
           </Row>
         </Grid>
@@ -152,14 +206,14 @@ class Home extends Component {
 const style = StyleSheet.create({
   header: {
     backgroundColor: '#22a6b3',
-    paddingLeft: 130,
+    paddingLeft: 0,
   },
   image: {
     marginLeft: -30,
   },
   cardHeader: {
     backgroundColor: '#22a6b3',
-    height: 150,
+    height: 200,
     borderBottomLeftRadius: 18,
     borderBottomRightRadius: 18,
   },
@@ -167,7 +221,7 @@ const style = StyleSheet.create({
     backgroundColor: 'white',
     height: 250,
     margin: 20,
-    marginTop: -120,
+    marginTop: -190,
     borderRadius: 20,
     padding: 10,
   },
