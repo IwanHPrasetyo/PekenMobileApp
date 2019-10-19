@@ -1,15 +1,39 @@
-import { createStackNavigator } from "react-navigation-stack";
-import Login from "./Pages/Login";
-import { createAppContainer } from "react-navigation";
+import {createStackNavigator} from 'react-navigation-stack';
+import Login from './Pages/Login';
+import {createAppContainer} from 'react-navigation';
+import Home from './Pages/Home';
+import History from './Pages/History';
+import Ceckout from './Componens/Ceckout';
+import Masterproduct from './Componens/Masterproduct';
 
-const Navigation = createStackNavigator(
+const MainNavigation = createStackNavigator(
   {
-    Login
+    Login,
+    Home,
+    History,
+    Ceckout,
+    Masterproduct,
   },
   {
-    headerMode: "none",
-    initialRouteKey: "Login"
-  }
+    headerMode: 'none',
+    initialRouteKey: 'Login',
+  },
+  {
+    headerMode: 'none',
+    initialRouteKey: 'Home',
+  },
+  {
+    headerMode: 'none',
+    initialRouteKey: 'History',
+  },
+  {
+    headerMode: 'none',
+    initialRouteKey: 'Ceckout',
+  },
+  {
+    headerMode: 'none',
+    initialRouteKey: 'Masterproduct',
+  },
 );
 
-export default createAppContainer(Navigation);
+export default createAppContainer(MainNavigation);

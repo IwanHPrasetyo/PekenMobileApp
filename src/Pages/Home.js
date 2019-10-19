@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Product from '../Componens/Product';
 import {
   Container,
+  Content,
   Header,
   Footer,
   FooterTab,
@@ -15,6 +16,7 @@ import {
   Col,
   Text,
   H3,
+  H1,
 } from 'native-base';
 import axios from 'axios';
 import {Row, Grid} from 'react-native-easy-grid';
@@ -36,7 +38,7 @@ class Home extends Component {
 
   getAll = async () => {
     await axios
-      .get('http://192.168.1.5:5000/products?limit=' + this.state.limit)
+      .get('http://3.80.248.213:5000/products?limit=' + this.state.limit)
       .then(result => {
         this.setState({
           data: result.data.data,
@@ -51,22 +53,31 @@ class Home extends Component {
 
   render() {
     return (
-      <Container style={{backgroundColor: '#c7ecee'}}>
+      <Container style={{backgroundColor: '#dff9fb'}}>
         <Header style={style.header}>
           <Left />
           <Body>
-            <Item
-              rounded
-              style={{
-                width: 200,
-                height: 40,
-                marginLeft: 180,
-                marginTop: 10,
-                backgroundColor: '#ffff',
-              }}>
-              <Input style={{marginLeft: 20}} placeholder="search" />
-              <Icon active name="search" />
-            </Item>
+            <Row size={1}>
+              <Col size={3}>
+                <H1 style={{marginLeft: -25, marginTop: 15, color: '#ffff'}}>
+                  Peken App
+                </H1>
+              </Col>
+              <Col size={1}>
+                <Item
+                  rounded
+                  style={{
+                    width: 200,
+                    height: 40,
+                    marginLeft: 30,
+                    marginTop: 10,
+                    backgroundColor: '#ffff',
+                  }}>
+                  <Input style={{marginLeft: 20}} />
+                  <Icon active name="search" />
+                </Item>
+              </Col>
+            </Row>
           </Body>
           <Right />
         </Header>
@@ -164,7 +175,7 @@ class Home extends Component {
             <Col style={{paddingLeft: 20, paddingRight: 20}}>
               <H3>Product</H3>
               <SafeAreaView>
-                <ScrollView style={{}}>
+                <ScrollView>
                   {this.state.data.map(item => {
                     return (
                       <Product
@@ -172,6 +183,7 @@ class Home extends Component {
                         name={item.name}
                         price={item.price}
                         picture={item.picture}
+                        category={item.category}
                         handleAddToCart={this.handleAddToCart}
                       />
                     );
@@ -185,16 +197,24 @@ class Home extends Component {
         <Footer>
           <FooterTab style={{backgroundColor: 'white', elevation: 40}}>
             <Button>
-              <Icon name="apps" />
+              <Icon
+                name="nutrition"
+                onPress={() => this.props.navigation.navigate('Masterproduct')}
+              />
             </Button>
-            <Button>
-              <Icon name="camera" />
+            <Button onPress={() => this.props.navigation.navigate('History')}>
+              <Icon name="bookmarks" />
             </Button>
-            <Button active>
-              <Icon active name="navigate" />
+            <Button
+              active
+              onPress={() => this.props.navigation.navigate('Home')}>
+              <Icon active name="home" />
             </Button>
-            <Button>
-              <Icon name="person" />
+            <Button onPress={() => this.props.navigation.navigate('Ceckout')}>
+              <Icon name="cart" />
+            </Button>
+            <Button onPress={() => this.props.navigation.navigate('Login')}>
+              <Icon name="close" />
             </Button>
           </FooterTab>
         </Footer>
@@ -214,8 +234,8 @@ const style = StyleSheet.create({
   cardHeader: {
     backgroundColor: '#22a6b3',
     height: 200,
-    borderBottomLeftRadius: 18,
-    borderBottomRightRadius: 18,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
   },
   cardMenu: {
     backgroundColor: 'white',
@@ -224,6 +244,7 @@ const style = StyleSheet.create({
     marginTop: -190,
     borderRadius: 20,
     padding: 10,
+    elevation: 2,
   },
   buttonBuy: {
     padding: 25,

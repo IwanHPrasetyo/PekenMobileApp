@@ -17,7 +17,7 @@ class Login extends Component {
     return (
       <Container>
         <ImageBackground
-          style={{width: 500, height: 800}}
+          style={{width: 500, height: 900}}
           source={require('../Images/backgorund.jpg')}>
           <Content style={style.styleCard}>
             <Form style={style.form}>
@@ -34,7 +34,9 @@ class Login extends Component {
                 <Input />
               </Item>
               <View style={style.view}>
-                <Button style={style.button}>
+                <Button
+                  style={style.button}
+                  onPress={() => this.props.navigation.navigate('Home')}>
                   <Text>Login</Text>
                 </Button>
                 <Button bordered info style={style.buttonInfo}>

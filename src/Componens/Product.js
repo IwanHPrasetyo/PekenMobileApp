@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
-import {Grid, Row, Col, H2, Text, Button, Icon} from 'native-base';
+import {
+  Grid,
+  Row,
+  Col,
+  H2,
+  Text,
+  Button,
+  Icon,
+  Card,
+  CardItem,
+  Body,
+} from 'native-base';
 import {StyleSheet, Image} from 'react-native';
 class Product extends Component {
   render() {
@@ -9,15 +20,14 @@ class Product extends Component {
         <Col size={1} style={style.image}>
           <Image
             style={{
-              width: 80,
-              height: 80,
-              padding: 10,
+              width: 100,
+              height: 100,
               borderTopRightRadius: 20,
               borderBottomLeftRadius: 20,
             }}
             source={{
               uri:
-                'http://192.168.1.5:5000/public/images/' + this.props.picture,
+                'http://3.80.248.213:5000/public/images/' + this.props.picture,
             }}></Image>
         </Col>
         <Col size={2} style={{padding: 10}}>
@@ -25,9 +35,25 @@ class Product extends Component {
           <Text style={{marginTop: 10, marginLeft: 20}}>
             € {this.props.price}
           </Text>
+          <Card
+            style={{
+              width: 100,
+              borderRadius: 50,
+              elevation: 1,
+              backgroundColor: 'red',
+            }}>
+            <CardItem>
+              <Body>
+                <Text>{this.props.category}</Text>
+              </Body>
+            </CardItem>
+          </Card>
         </Col>
         <Col size={1} style={style.cardBuy}>
-          <Button iconLeft style={style.buttonBuy}>
+          <Button
+            iconLeft
+            style={style.buttonBuy}
+            onPress={() => this.props.AddtoCart(e, this.props)}>
             <Icon name="cart" />
           </Button>
         </Col>
@@ -38,15 +64,15 @@ class Product extends Component {
 
 const style = StyleSheet.create({
   card: {
-    height: 80,
+    height: 130,
     marginTop: 10,
-    backgroundColor: '#ffff',
-    elevation: 0,
+    backgroundColor: '#ffffff',
+    elevation: 1,
     borderRadius: 20,
   },
   image: {
     borderRadius: 0,
-    paddingLeft: 5,
+    margin: 10,
   },
   cardBuy: {
     borderRadius: 20,
@@ -54,7 +80,7 @@ const style = StyleSheet.create({
   },
   buttonBuy: {
     padding: 25,
-    marginTop: 10,
+    marginTop: 30,
     borderRadius: 20,
     elevation: 4,
   },
