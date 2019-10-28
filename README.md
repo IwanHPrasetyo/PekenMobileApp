@@ -4,9 +4,9 @@
   <img width="600" height="300" src="https://i-verve.com/wp-content/themes/iverve-child/images/react-native/react-native-solution-expertise.png">
 </p>
 
-## Website Peken App
+## Peken Mobile App
 
-Peken App is an application for selling vegetables based on websites where users can buy anywhere
+Peken App is an application for selling vegetables based on mobile App where users can buy anywhere
 
 ### Requirment
 
