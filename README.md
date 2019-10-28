@@ -1,7 +1,7 @@
 # PekenMobileApp
 
 <p align="center">
-  <img width="200" height="200" src="https://icons-for-free.com/iconfiles/png/512/logo+react+react+js+icon-1320184811840217251.png">
+  <img width="200" height="200" src="https://i-verve.com/wp-content/themes/iverve-child/images/react-native/react-native-solution-expertise.png">
   <img width="460" height="200" src="https://www.techaltum.com/img/react-js.jpg">
 </p>
 
